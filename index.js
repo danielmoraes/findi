@@ -15,9 +15,12 @@ const diff = (a, b) => new Promise((resolve, reject) => {
   })
 })
 
-const findMatch = async (imagePath, searchPath) => {
+const findMatch = async (imagePath, searchPaths) => {
   try {
-    const images = await recursive(searchPath)
+    let images = []
+    for (let i = 0; i < searchPaths.length; i++) {
+      images = images.concat(await recursive(searchPaths[i]))
+    }
     const diffs =
       await Promise.map(images, i => diff(imagePath, i), { concurrency: 10 })
     const bestMatch = diffs.reduce((b, v, i, a) => v < a[b] ? i : b, 0)
@@ -27,9 +30,9 @@ const findMatch = async (imagePath, searchPath) => {
   }
 }
 
-const renameMatch = async (imagePath, searchPath) => {
+const renameMatch = async (imagePath, searchPaths) => {
   try {
-    const bestMatch = await findMatch(imagePath, searchPath)
+    const bestMatch = await findMatch(imagePath, searchPaths)
     const duplicatePath = bestMatch.path
     const duplicateNewPath =
       path.join(path.dirname(duplicatePath), path.basename(imagePath))
@@ -45,13 +48,13 @@ program
   .description('Find image duplicates')
 
 program
-  .command('find-match <image-path> <search-path>')
+  .command('find-match <image-path> [search-paths...]')
   .alias('f')
   .description('Find best match')
   .action(async (i, s) => console.log(await findMatch(i, s)))
 
 program
-  .command('rename-match <image-path> <search-path>')
+  .command('rename-match <image-path> [search-paths...]')
   .alias('r')
   .description('Rename best match')
   .action(async (i, s) => console.log(await renameMatch(i, s)))
