@@ -1,17 +1,21 @@
-findi
-=====
+# findi [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url]
+
+[npm-image]: https://img.shields.io/npm/v/findi.svg
+[npm-url]: https://npmjs.org/package/findi
+[downloads-image]: https://img.shields.io/npm/dm/findi.svg
+[downloads-url]: https://npmjs.org/package/findi
+[standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[standard-url]: https://standardjs.com
 
 Find duplicate images.
 
-Install
--------
+## Install
 
 ```
 npm install findi -g
 ```
 
-Usage
------
+## Usage
 
 Find best match:
 
@@ -29,7 +33,6 @@ findi r awesome-cat.jpg search-path/
   to: 'search-path/awesome-cat.jpg' }
 ```
 
-License
--------
+## License
 
 MIT. Copyright (c) [Daniel Moraes](https://dmoraes.org).

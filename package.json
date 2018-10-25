@@ -1,6 +1,6 @@
 {
   "name": "findi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Find image duplicates",
   "author": "Daniel Moraes <daniel.b.moraes@gmail.com>",
   "license": "MIT",
