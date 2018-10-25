@@ -1,0 +1,19 @@
+{
+  "name": "findi",
+  "version": "0.0.1",
+  "description": "Find image duplicates",
+  "author": "Daniel Moraes <daniel.b.moraes@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielmoraes/findi.git"
+  },
+  "preferGlobal": true,
+  "bin": "./index.js",
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "commander": "^2.19.0",
+    "gm": "^1.23.1",
+    "recursive-readdir": "^2.2.2"
+  }
+}
